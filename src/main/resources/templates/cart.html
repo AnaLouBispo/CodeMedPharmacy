@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&family=Poppins:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/cartStyle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrinho de Compras</title>
+   
+  </head>
+  <body>
+    
+    <header>
+      <nav>
+          <img class="img" src="/imagem-removebg-preview (1).png" alt="">
+          <ul>
+              <li><a href="/codeMed/">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-house" viewBox="0 0 16 16">
+                          <path
+                              d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
+                      </svg>
+                      Home
+                  </a>
+              </li>
+
+              <li>
+                  <a href="/codeMed/Carrinho">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-bag" viewBox="0 0 16 16">
+                          <path
+                              d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
+                      </svg>
+                      Sacolinha
+                  </a>
+              </li>
+            
+          </ul>
+      </nav>
+
+  </header>
+    <main>
+      <h1>Cestinha de Compras</h1>
+
+      <div class="product" th:each="ob:${lista}">
+        <img th:src="${ob.imagem}" alt="" />
+        <div class="product-info">
+          <h3 th:text="${ob.nome}"></h3>
+          <p th:text="${ob.descricao}"></p>
+          <p class="product-price" th:text="${ob.preco}"></p>
+           <a th:href="@{/codeMed/deletar-carrinho(id=${ob.id})}" class="delete">Deletar</a>
+        </div>
+      </div>
+
+      <div class="btn"> 
+        <button onclick="window.location.href = '/codeMed/';">Adicionar Mais</button>
+        <button onclick="window.location.href = '/codeMed/Finalizar';">Finalizar</button>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 CodeMed Pharma. Todos os direitos reservados.</p>
+  </footer>
+  </body>
+</html>
+
